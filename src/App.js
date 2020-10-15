@@ -1,7 +1,10 @@
 import React from "react";
 import { Stage, Layer } from "react-konva";
 import "./App.css";
-import { getRandomHexagons, Hexagon } from "./features/hexagons/Hexagons";
+import {
+  getRandomRegularPolygons,
+  RegularPolygon,
+} from "./features/shapes/RegularPolygons";
 
 const App = () => {
   const canvasWidth = window.innerWidth;
@@ -10,9 +13,11 @@ const App = () => {
   return (
     <Stage width={canvasWidth} height={canvasHeight}>
       <Layer>
-        {getRandomHexagons(canvasWidth, canvasHeight).map((hexagon, i) => (
-          <Hexagon key={i} {...hexagon} />
-        ))}
+        {getRandomRegularPolygons(canvasWidth, canvasHeight).map(
+          (polygon, i) => (
+            <RegularPolygon key={i} {...polygon} />
+          )
+        )}
       </Layer>
     </Stage>
   );
