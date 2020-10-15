@@ -1,6 +1,5 @@
 import React from "react";
 import { Stage, Layer } from "react-konva";
-import "./App.css";
 import {
   getRandomRegularPolygons,
   RegularPolygon,
