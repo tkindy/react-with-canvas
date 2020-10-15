@@ -1,6 +1,5 @@
 import { useAnimation, useCanvas } from "../../canvas/Canvas";
 
-// https://www.redblobgames.com/grids/hexagons/
 const getHexagonCorners = (x, y, radius, rotationDeg) => {
   const rotationRad = (Math.PI / 180) * rotationDeg;
 
