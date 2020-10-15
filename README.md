@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# React with Canvas
+
+I'm trying out some basic web game development (a board game specifically) which will involve drawing to an HTML `<canvas>` element. I also want to build the game's UI in a declarative way so I want to use React. This project is an example I built as a proof-of-concept for using Canvas inside a React app.
+
+I started by following [this blog post](https://thibaut.io/react-canvas-components) which was really useful for understanding how to encapsulate the imperative Canvas element inside a component-focused framework like React. I then found [`konva`](https://github.com/konvajs/konva), an easy-to-use framework built around Canvas, and [`react-konva`](https://github.com/konvajs/react-konva) which adds React bindings for it.
 
 ## Available Scripts
 
