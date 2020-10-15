@@ -1,6 +1,6 @@
 import React from "react";
+import { Stage, Layer } from "react-konva";
 import "./App.css";
-import { Canvas } from "./canvas/Canvas";
 import { getRandomHexagons, Hexagon } from "./features/hexagons/Hexagons";
 
 const App = () => {
@@ -8,11 +8,13 @@ const App = () => {
   const canvasHeight = window.innerHeight;
 
   return (
-    <Canvas width={canvasWidth} height={canvasHeight}>
-      {getRandomHexagons(canvasWidth, canvasHeight).map((hexagon, i) => (
-        <Hexagon key={i} {...hexagon} />
-      ))}
-    </Canvas>
+    <Stage width={canvasWidth} height={canvasHeight}>
+      <Layer>
+        {getRandomHexagons(canvasWidth, canvasHeight).map((hexagon, i) => (
+          <Hexagon key={i} {...hexagon} />
+        ))}
+      </Layer>
+    </Stage>
   );
 };
 

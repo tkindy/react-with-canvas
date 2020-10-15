@@ -1,4 +1,6 @@
-import { useAnimation, useCanvas } from "../../canvas/Canvas";
+import React from "react";
+import { Shape } from "react-konva";
+import { useAnimation } from "../../utils/animation";
 
 const getHexagonCorners = (x, y, radius, rotationDeg) => {
   const rotationRad = (Math.PI / 180) * rotationDeg;
@@ -14,25 +16,25 @@ const getHexagonCorners = (x, y, radius, rotationDeg) => {
 };
 
 export const Hexagon = ({ x, y, radius, rotationDeg, color }) => {
-  const renderingContext = useCanvas();
   const animatedRotationDeg = useAnimation(rotationDeg, (angle) => angle + 1);
+  const corners = getHexagonCorners(x, y, radius, animatedRotationDeg);
 
-  if (renderingContext !== null) {
-    const corners = getHexagonCorners(x, y, radius, animatedRotationDeg);
-
-    renderingContext.beginPath();
-    corners.forEach((corner, index) => {
-      if (index === 0) {
-        renderingContext.moveTo(corner.x, corner.y);
-      } else {
-        renderingContext.lineTo(corner.x, corner.y);
-      }
-    });
-    renderingContext.fillStyle = color;
-    renderingContext.fill();
-  }
-
-  return null;
+  return (
+    <Shape
+      sceneFunc={(context, shape) => {
+        context.beginPath();
+        corners.forEach((corner, index) => {
+          if (index === 0) {
+            context.moveTo(corner.x, corner.y);
+          } else {
+            context.lineTo(corner.x, corner.y);
+          }
+        });
+        context.fillStrokeShape(shape);
+      }}
+      fill={color}
+    />
+  );
 };
 
 export const getRandomHexagons = (canvasWidth, canvasHeight) => {
